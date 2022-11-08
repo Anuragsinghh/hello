@@ -1,0 +1,107 @@
+def makeMatrixShort(text,size=5):
+    t1 =  [list(text[i:i+size]) for i in range(0,len(text),size)]
+    # fill the last row with empty strings
+    t1[-1] += ['']*(size-len(t1[-1]))
+    return t1
+
+def encryptShort(text):
+    mat = makeMatrixShort(text)
+    return "".join([mat[j][i] for i in range(len(mat[0])) for j in range(len(mat))])
+
+print(encryptShort("WEAREDISCOVEREDSAVEYOURSELF"))
+
+-----------------------------------------------------------------------------------------------
+
+
+# import string
+# from collections import Counter
+# all_letters= string.ascii_letters
+
+
+# key = int(input("key is  "))
+
+# plain_txt = input('Input statement\n')
+# print(plain_txt)
+
+
+
+# dict1= {}
+# for i in range(len(all_letters)):
+#     dict1[all_letters[i]]=all_letters[(i+key)%len(all_letters)]
+
+
+# cipher_txt=[]
+
+# for char in plain_txt:
+#     if char in all_letters:
+#         temp=dict1[char]
+#         cipher_txt.append(temp)
+#     else:
+#         temp= char
+#         cipher_txt.append(temp)
+
+# cipher_txt="".join(cipher_txt)
+# print("Cipher Text is:",cipher_txt)
+
+
+# dict2 = {}
+# for i in range(len(all_letters)):
+#  dict2[all_letters[i]] = all_letters[(i-key)%(len(all_letters))]
+# # loop to recover plain text
+# decrypt_txt = []
+# for char in cipher_txt:
+#  if char in all_letters:
+#     temp = dict2[char]
+#     decrypt_txt.append(temp)
+#  else:
+#     temp = char
+#     decrypt_txt.append(temp)
+# decrypt_txt = "".join(decrypt_txt)
+# print("Recovered plain text :", decrypt_txt)
+
+# def frequency(plain_txt):
+#     frequency = dict()
+#     length = len(plain_txt)
+#     fr = 100/length
+#     for char in plain_txt.lower():
+#         if char in frequency:
+#             frequency[char] += fr
+#         elif char == " ":
+#             continue
+#         else:
+#             frequency[char] = fr
+#     return frequency
+# get_frequency = frequency(plain_txt)
+
+# print("frequency: ",get_frequency)
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+
+# vignere bhai ka encryption
+
+# def generateKey(string, key):
+#     key = list(key)
+#     if len(string) == len(key):
+#             return (key)
+#     else:
+#         for i in range(len(string) - len(key)):
+#          key.append(key[i % len(key)])
+#     return ("".join(key))
+
+# def encryption(string, key):
+#     encrypts_text=[]
+#     for i in range(len(string)):
+#         x = (ord(string[i])  + ord(key[i])) % 26
+#         x += ord('A')
+#         encrypts_text.append(chr(x))
+#     return("".join(encrypts_text))
+
+# if __name__ == "__main__":
+#     string=input("enter the message: ")
+#     keyword=input("enter the keyword: ")
+#     key=generateKey(string,keyword)
+#     encrypts_text=encryption(string,key)
+#     print("encrypted message: ",encrypts_text)
